@@ -1,0 +1,52 @@
+
+/**********************************************
+* Imports
+***********************************************/
+
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+@import url('https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i');
+
+
+/**********************************************
+* General
+***********************************************/
+
+body {
+    
+}
+
+.form-control:focus {
+    border-color: #343a40;
+    box-shadow: none;
+}
+
+/**********************************************
+* Grayscale Theme
+***********************************************/
+
+
+
+/**********************************************
+* ACF Styles
+***********************************************/
+
+.alert-primary p {
+    margin-top: 1rem;
+}
+
+.screen-reader-text {
+    display: none;
+}
+
+.acf-file-uploader .button {
+    font-size: 13px;
+    color: #0071a1;
+    border: thin solid #0071a1;
+    background: #f3f5f6;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.acf-file-uploader a.button:hover {
+    text-decoration: none;
+}
