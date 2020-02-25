@@ -1,6 +1,162 @@
 <?php
 
 class JC_Component {
+	
+	// Simple components
+	
+	public static function the_featured_primary($param) { 
+		
+		$param = $param ?? [
+			'post_id' => '',
+			'featured_image' => 'https://picsum.photos/700/600?grayscale',
+			'title' => 'Grayscale',
+			'content' => 'A free, responsive, one page Bootstrap theme created by Start Bootstrap.'
+		];
+	?>
+	
+	 <header class="masthead" style="background: linear-gradient(to bottom, rgba(22, 22, 22, 0.3) 0%, rgba(22, 22, 22, 0.7) 75%, #161616 100%), url(<?php echo $param['featured_image']; ?>); background-size: cover; ">
+		<div class="container d-flex h-100 align-items-center">
+		  <div class="mx-auto text-center">
+			<h1 class="mx-auto my-0 text-uppercase"><?php echo $param['title']; ?></h1>
+			<h2 class="text-white-50 mx-auto mt-2 mb-5"><?php echo $param['content']; ?></h2>
+			<a href="#about" class="btn btn-primary js-scroll-trigger">Get Started</a>
+		  </div>
+		</div>
+	  </header>
+
+	<?php
+	}
+	
+	
+	public static function the_featured_secondary() { 
+	
+		$param = [
+			'post_id' => '',
+			'featured_image' => 'https://picsum.photos/700/600?grayscale',
+			'title' => 'Built with Bootstrap 4',
+			'content' => '<p class="text-white-50">Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours right now, simply download the template on
+				<a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>'
+		];
+
+	?>
+
+	<section id="about" class="about-section text-center">
+		<div class="container">
+		  <div class="row">
+			<div class="col-lg-8 mx-auto">
+			  <h2 class="text-white mb-4"><?php echo $param['title']; ?></h2>
+			  <?php echo $param['content']; ?>
+			</div>
+		  </div>
+		  <img src="<?php echo $param['featured_image']; ?>" class="img-fluid" alt="">
+		</div>
+	  </section>
+
+	<?php
+	}
+	
+	
+	public static function the_post_summary_row_lg() { 
+	
+		$param = [
+				'featured_image' => 'https://picsum.photos/700/600?grayscale',
+				'title' => 'Shoreline',
+				'content' => 'Grayscale is open source and MIT licensed. This means you can use it for any project - even commercial projects! Download it, customize it, and publish your website!'
+			];	
+		?>
+
+			
+		<div class="row align-items-center no-gutters mb-4 mb-lg-5">
+			<div class="col-xl-8 col-lg-7">
+			  <img class="img-fluid mb-3 mb-lg-0" src="<?php echo $param['featured_image']; ?>" alt="">
+			</div>
+			<div class="col-xl-4 col-lg-5">
+			  <div class="featured-text text-center text-lg-left">
+				<h4><?php echo $param['title']; ?></h4>
+				<p class="text-black-50 mb-0"><?php echo $param['content']; ?></p>
+			  </div>
+			</div>
+		  </div>
+
+	<?php
+	}
+	
+	public static function the_post_summary_row($post_row) { 
+		
+// 		$post_row = [
+// 				'featured_image' => 'https://picsum.photos/700/600?grayscale',
+// 				'title' => 'Misty',
+// 				'excerpt' => 'An example of where you can put an image of a project, or anything else, along with a description.',
+// 				'order_first_class' => 'order-lg-first'
+// 			];
+		?>
+
+			
+		<div class="row justify-content-center no-gutters mb-5 mb-lg-0">
+			<div class="col-lg-6">
+			  <img class="img-fluid" src="<?php echo $post_row['featured_image']; ?>" alt="">
+			</div>
+			<div class="col-lg-6 <?php echo $post_row['order_first_class']; ?>">
+			  <div class="bg-black text-center h-100 project">
+				<div class="d-flex h-100">
+				  <div class="project-text w-100 my-auto text-center text-lg-left">
+					<h4 class="text-white"><?php echo $post_row['title']; ?></h4>
+					<p class="mb-0 text-white-50"><?php echo $post_row['excerpt']; ?></p>
+					<hr class="d-none d-lg-block mb-0 ml-0">
+				  </div>
+				</div>
+			  </div>
+			</div>
+		  </div>
+
+	<?php
+	}
+	
+	
+	public static function the_small_white_card($param) { 
+		
+// 		$param = [
+// 			'title' => 'Phone',
+// 			'content' => '+1 (555) 902-8832',
+// 			'fa_class' => 'fa fa-mobile-alt'
+// 		];
+		?>
+
+			
+			<div class="col-md-4 mb-3 mb-md-0">
+			  <div class="card py-4 h-100">
+				<div class="card-body text-center">
+				  <i class="<?php echo $param['fa_class']; ?> text-primary mb-2"></i>
+				  <h4 class="text-uppercase m-0"><?php echo $param['title']; ?></h4>
+				  <hr class="my-4">
+				  <div class="small text-black-50"><?php echo $param['content']; ?></div>
+				</div>
+			  </div>
+			</div>
+
+	<?php
+	}
+	
+	public static function the_social_badge($param) { 
+		
+// 		$param = [
+// 			'href' => '#',
+// 			'fa_class' => 'fa fa-github'
+// 		];
+		?>
+
+			
+			<a href="<?php echo $param['href']; ?>" class="mx-2">
+			  <i class="<?php echo $param['fa_class']; ?>"></i>
+			</a>
+
+	<?php
+	}
+	
+	
+	
+	// Composite components
+	
 	public static function the_nav_old() { ?>
 	
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark d-flex justify-content-between">
@@ -48,21 +204,21 @@ class JC_Component {
 	<!-- Navigation -->
 	  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
 		<div class="container">
-		  <a class="navbar-brand js-scroll-trigger" href="#page-top">Start Bootstrap</a>
+		  <a class="navbar-brand js-scroll-trigger" href="#page-top">jc.icaro</a>
 		  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 			Menu
-			<i class="fas fa-bars"></i>
+			<i class="fa fa-bars"></i>
 		  </button>
 		  <div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
 			  <li class="nav-item">
-				<a class="nav-link js-scroll-trigger" href="#about">About</a>
+				<a class="nav-link js-scroll-trigger" href="#about">ServiceNow</a>
 			  </li>
 			  <li class="nav-item">
-				<a class="nav-link js-scroll-trigger" href="#projects">Projects</a>
+				<a class="nav-link js-scroll-trigger" href="#projects">Wordpress</a>
 			  </li>
 			  <li class="nav-item">
-				<a class="nav-link js-scroll-trigger" href="#signup">Contact</a>
+				<a class="nav-link js-scroll-trigger" href="#signup">Photography</a>
 			  </li>
 			</ul>
 			  <form class="form-inline my-2 my-lg-0 ml-auto">
@@ -79,40 +235,13 @@ class JC_Component {
 	
 	
 	
-	public static function the_header() { ?>
-
-	  <!-- Header -->
-	  <header class="masthead" style="background: linear-gradient(to bottom, rgba(22, 22, 22, 0.3) 0%, rgba(22, 22, 22, 0.7) 75%, #161616 100%), url('https://picsum.photos/700/600?grayscale');">
-		<div class="container d-flex h-100 align-items-center">
-		  <div class="mx-auto text-center">
-			<h1 class="mx-auto my-0 text-uppercase">Grayscale</h1>
-			<h2 class="text-white-50 mx-auto mt-2 mb-5">A free, responsive, one page Bootstrap theme created by Start Bootstrap.</h2>
-			<a href="#about" class="btn btn-primary js-scroll-trigger">Get Started</a>
-		  </div>
-		</div>
-	  </header>
-
-	<?php
+	public static function the_header() { 
+		self::the_featured_primary();
 	}
 	
 	
-	public static function the_about() { ?>
-	
-	  <!-- About Section -->
-	  <section id="about" class="about-section text-center">
-		<div class="container">
-		  <div class="row">
-			<div class="col-lg-8 mx-auto">
-			  <h2 class="text-white mb-4">Built with Bootstrap 4</h2>
-			  <p class="text-white-50">Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours right now, simply download the template on
-				<a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>
-			</div>
-		  </div>
-		  <img src="https://picsum.photos/700/600?grayscale" class="img-fluid" alt="">
-		</div>
-	  </section>
-
-	<?php
+	public static function the_about() { 
+		self::the_featured_secondary();
 	}
 	
 	public static function the_post_list() { ?>
@@ -122,53 +251,31 @@ class JC_Component {
 		<div class="container">
 
 		  <!-- Featured Project Row -->
-		  <div class="row align-items-center no-gutters mb-4 mb-lg-5">
-			<div class="col-xl-8 col-lg-7">
-			  <img class="img-fluid mb-3 mb-lg-0" src="https://picsum.photos/700/600?grayscale" alt="">
-			</div>
-			<div class="col-xl-4 col-lg-5">
-			  <div class="featured-text text-center text-lg-left">
-				<h4>Shoreline</h4>
-				<p class="text-black-50 mb-0">Grayscale is open source and MIT licensed. This means you can use it for any project - even commercial projects! Download it, customize it, and publish your website!</p>
-			  </div>
-			</div>
-		  </div>
+		<?php self::the_post_summary_row_lg(); ?>
 
 		  <!-- Project One Row -->
-		  <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
-			<div class="col-lg-6">
-			  <img class="img-fluid" src="https://picsum.photos/700/600?grayscale" alt="">
-			</div>
-			<div class="col-lg-6">
-			  <div class="bg-black text-center h-100 project">
-				<div class="d-flex h-100">
-				  <div class="project-text w-100 my-auto text-center text-lg-left">
-					<h4 class="text-white">Misty</h4>
-					<p class="mb-0 text-white-50">An example of where you can put an image of a project, or anything else, along with a description.</p>
-					<hr class="d-none d-lg-block mb-0 ml-0">
-				  </div>
-				</div>
-			  </div>
-			</div>
-		  </div>
+		<?php
+			$post_row = [
+				'featured_image' => 'https://picsum.photos/700/600?grayscale',
+				'title' => 'Misty',
+				'excerpt' => 'An example of where you can put an image of a project, or anything else, along with a description.'
+			];
+			self::the_post_summary_row($post_row);
+		?>
+			
 
 		  <!-- Project Two Row -->
-		  <div class="row justify-content-center no-gutters">
-			<div class="col-lg-6">
-			  <img class="img-fluid" src="https://picsum.photos/700/600?grayscale" alt="">
-			</div>
-			<div class="col-lg-6 order-lg-first">
-			  <div class="bg-black text-center h-100 project">
-				<div class="d-flex h-100">
-				  <div class="project-text w-100 my-auto text-center text-lg-right">
-					<h4 class="text-white">Mountains</h4>
-					<p class="mb-0 text-white-50">Another example of a project with its respective description. These sections work well responsively as well, try this theme on a small screen!</p>
-					<hr class="d-none d-lg-block mb-0 mr-0">
-				  </div>
-				</div>
-			  </div>
-			</div>
-		  </div>
+			
+		<?php
+			$post_row = [
+				'featured_image' => 'https://picsum.photos/700/600?grayscale',
+				'title' => 'Mountains',
+				'excerpt' => 'Another example of a project with its respective description. These sections work well responsively as well, try this theme on a small screen!',
+				'order_first_class' => 'order-lg-first'
+			];
+			self::the_post_summary_row($post_row);
+		?>
+			
 
 		</div>
 	  </section>
@@ -180,12 +287,12 @@ class JC_Component {
 	public static function the_contact_form() { ?>
 	
 	 <!-- Signup Section -->
-	  <section id="signup" class="signup-section" style="background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url('https://picsum.photos/700/600?grayscale')">
+	  <section id="signup" class="signup-section" style="background: linear-gradient(to bottom, rgba(22, 22, 22, 0.1) 0%, rgba(22, 22, 22, 0.5) 75%, #161616 100%), url('https://picsum.photos/700/600?grayscale'); background-size: cover;">
 		<div class="container">
 		  <div class="row">
 			<div class="col-md-10 col-lg-8 mx-auto text-center">
 
-			  <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
+			  <i class="fa fa-paper-plane fa-2x mb-2 text-white"></i>
 			  <h2 class="text-white mb-5">Subscribe to receive updates!</h2>
 
 			  <form class="form-inline d-flex">
@@ -202,74 +309,79 @@ class JC_Component {
 	}
 	
 	
-	public static function the_trisection() { ?>
+	public static function the_trisection() { 
+		$left_block = [
+			'title' => 'Address',
+			'content' => '4923 Market Street, Orlando FL',
+			'fa_class' => 'fa fa-map-marked-alt'
+		];
+		$middle_block = [
+			'title' => 'Email',
+			'content' => 'hello@yourdomain.com',
+			'fa_class' => 'fa fa-envelope'
+		];
+		$right_block = [
+			'title' => 'Phone',
+			'content' => '+1 (555) 902-8832',
+			'fa_class' => 'fa fa-mobile-alt'
+		];
+	?>
 	
 	  <!-- Contact Section -->
 	  <section class="contact-section bg-black">
+		  
 		<div class="container">
 
 		  <div class="row">
+			<?php self::the_small_white_card($left_block); ?>
+			<?php self::the_small_white_card($middle_block); ?>
+			<?php self::the_small_white_card($right_block); ?>
 
-			<div class="col-md-4 mb-3 mb-md-0">
-			  <div class="card py-4 h-100">
-				<div class="card-body text-center">
-				  <i class="fas fa-map-marked-alt text-primary mb-2"></i>
-				  <h4 class="text-uppercase m-0">Address</h4>
-				  <hr class="my-4">
-				  <div class="small text-black-50">4923 Market Street, Orlando FL</div>
-				</div>
-			  </div>
-			</div>
-
-			<div class="col-md-4 mb-3 mb-md-0">
-			  <div class="card py-4 h-100">
-				<div class="card-body text-center">
-				  <i class="fas fa-envelope text-primary mb-2"></i>
-				  <h4 class="text-uppercase m-0">Email</h4>
-				  <hr class="my-4">
-				  <div class="small text-black-50">
-					<a href="#">hello@yourdomain.com</a>
-				  </div>
-				</div>
-			  </div>
-			</div>
-
-			<div class="col-md-4 mb-3 mb-md-0">
-			  <div class="card py-4 h-100">
-				<div class="card-body text-center">
-				  <i class="fas fa-mobile-alt text-primary mb-2"></i>
-				  <h4 class="text-uppercase m-0">Phone</h4>
-				  <hr class="my-4">
-				  <div class="small text-black-50">+1 (555) 902-8832</div>
-				</div>
-			  </div>
-			</div>
 		  </div>
 
 		  <div class="social d-flex justify-content-center">
-			<a href="#" class="mx-2">
-			  <i class="fab fa-twitter"></i>
-			</a>
-			<a href="#" class="mx-2">
-			  <i class="fab fa-facebook-f"></i>
-			</a>
-			<a href="#" class="mx-2">
-			  <i class="fab fa-github"></i>
-			</a>
-		  </div>
+		<?php
+			$social_links = [
+				[
+					'fa_class' => 'fa fa-twitter',
+					'href' => '#'
+				],
+				[
+					'fa_class' => 'fa fa-facebook-f',
+					'href' => '#'
+				],
+				[
+					'fa_class' => 'fa fa-github',
+					'href' => '#'
+				],
+				[
+					'fa_class' => 'fa fa-facebook-f',
+					'href' => '#'
+				],
+			];	  
+		?>
+			  
+		<?php 
+			foreach ($social_links as $sl) {
+				self::the_social_badge($sl);
+			}
+		?>
+		  </div> <!-- .social -->
 
-		</div>
-	  </section>
+		</div><!-- .container -->
+	  </section> <!-- .contact-section -->
 
 	<?php
 	}
 	
-	public static function the_footer() { ?>
+	public static function the_footer() { 
+		$copyright_text = '&copy; JC Icaro 2020';
+	?>
 	
 	  <!-- Footer -->
 	  <footer class="bg-black small text-center text-white-50">
 		<div class="container">
-		  Copyright &copy; Your Website 2019
+			<?php echo $copyright_text; ?>
 		</div>
 	  </footer>
 

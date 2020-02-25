@@ -10,7 +10,7 @@
 
 <?php JC_Component::the_post_list(); ?>
 
-<?php JC_Component::the_contact_form(); ?>
+<?php // JC_Component::the_contact_form(); ?>
 
 <?php JC_Component::the_trisection(); ?>
 
