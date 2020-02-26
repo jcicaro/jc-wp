@@ -10,8 +10,10 @@ class JC_Component {
 			'post_id' => '',
 			'featured_image' => 'https://picsum.photos/700/600?grayscale',
 			'title' => 'Grayscale',
-			'content' => 'A free, responsive, one page Bootstrap theme created by Start Bootstrap.'
+			'content' => 'A free, responsive, one page Bootstrap theme created by Start Bootstrap.',
+			'buttons' => []
 		];
+		
 	?>
 	
 	 <header class="masthead" style="background: linear-gradient(to bottom, rgba(22, 22, 22, 0.3) 0%, rgba(22, 22, 22, 0.7) 75%, #161616 100%), url(<?php echo $param['featured_image']; ?>); background-size: cover; ">
@@ -19,7 +21,12 @@ class JC_Component {
 		  <div class="mx-auto text-center">
 			<h1 class="mx-auto my-0 text-uppercase"><?php echo $param['title']; ?></h1>
 			<h2 class="text-white-50 mx-auto mt-2 mb-5"><?php echo $param['content']; ?></h2>
-			<a href="#about" class="btn btn-primary js-scroll-trigger">Get Started</a>
+			  <?php
+			  foreach($param['buttons'] as $button) { ?>
+				<a href="<?php echo $button['button_href']; ?>" class="btn btn-primary js-scroll-trigger"><?php echo $button['button_label']; ?></a>
+			  <?php
+			  }
+			  ?>
 		  </div>
 		</div>
 	  </header>
@@ -28,16 +35,15 @@ class JC_Component {
 	}
 	
 	
-	public static function the_featured_secondary() { 
+	public static function the_featured_secondary($param) { 
 	
-		$param = [
+		$param = $param ?? [
 			'post_id' => '',
 			'featured_image' => 'https://picsum.photos/700/600?grayscale',
 			'title' => 'Built with Bootstrap 4',
-			'content' => '<p class="text-white-50">Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours right now, simply download the template on
-				<a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.</p>'
+			'content' => 'Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours right now, simply download the template on <a href="http://startbootstrap.com/template-overviews/grayscale/">the preview page</a>. The theme is open source, and you can use it for any purpose, personal or commercial.',
+			'buttons' => []
 		];
-
 	?>
 
 	<section id="about" class="about-section text-center">
@@ -45,10 +51,16 @@ class JC_Component {
 		  <div class="row">
 			<div class="col-lg-8 mx-auto">
 			  <h2 class="text-white mb-4"><?php echo $param['title']; ?></h2>
-			  <?php echo $param['content']; ?>
+			  <div class="text-white"><?php echo $param['content']; ?></div>
+				 <?php
+			  foreach($param['buttons'] as $button) { ?>
+				<a href="<?php echo $button['button_href']; ?>" class="btn btn-primary js-scroll-trigger"><?php echo $button['button_label']; ?></a>
+			  <?php
+			  }
+			  ?>
 			</div>
 		  </div>
-		  <img src="<?php echo $param['featured_image']; ?>" class="img-fluid" alt="">
+		  <img src="<?php echo $param['featured_image']; ?>" class="img-fluid featured-img" alt="">
 		</div>
 	  </section>
 
@@ -56,53 +68,70 @@ class JC_Component {
 	}
 	
 	
-	public static function the_post_summary_row_lg() { 
+	public static function the_post_summary_row_lg($param) { 
 	
-		$param = [
+		$param = $param ?? [
 				'featured_image' => 'https://picsum.photos/700/600?grayscale',
 				'title' => 'Shoreline',
-				'content' => 'Grayscale is open source and MIT licensed. This means you can use it for any project - even commercial projects! Download it, customize it, and publish your website!'
+				'content' => 'Grayscale is open source and MIT licensed. This means you can use it for any project - even commercial projects! Download it, customize it, and publish your website!',
+				'buttons' => []
 			];	
 		?>
 
-			
-		<div class="row align-items-center no-gutters mb-4 mb-lg-5">
-			<div class="col-xl-8 col-lg-7">
-			  <img class="img-fluid mb-3 mb-lg-0" src="<?php echo $param['featured_image']; ?>" alt="">
+		<section id="projects" class="projects-section bg-light">
+			<div class="container">
+				<div class="row align-items-center no-gutters mb-4 mb-lg-5">
+					<div class="col-xl-8 col-lg-7">
+					  <img class="img-fluid mb-3 mb-lg-0" src="<?php echo $param['featured_image']; ?>" alt="">
+					</div>
+					<div class="col-xl-4 col-lg-5">
+					  <div class="featured-text text-center text-lg-left">
+						<h4><?php echo $param['title']; ?></h4>
+						<div class="text-black-50 mb-0"><?php echo $param['content']; ?></div>
+						  <?php
+					  foreach($param['buttons'] as $button) { ?>
+						<a href="<?php echo $button['button_href']; ?>" class="btn btn-primary js-scroll-trigger"><?php echo $button['button_label']; ?></a>
+					  <?php
+					  }
+					  ?>
+					  </div>
+					</div>
+				  </div>
 			</div>
-			<div class="col-xl-4 col-lg-5">
-			  <div class="featured-text text-center text-lg-left">
-				<h4><?php echo $param['title']; ?></h4>
-				<p class="text-black-50 mb-0"><?php echo $param['content']; ?></p>
-			  </div>
-			</div>
-		  </div>
+		</section>
 
 	<?php
 	}
 	
 	public static function the_post_summary_row($post_row) { 
 		
-// 		$post_row = [
+// 		$post_row = $post_row ?? [
 // 				'featured_image' => 'https://picsum.photos/700/600?grayscale',
 // 				'title' => 'Misty',
-// 				'excerpt' => 'An example of where you can put an image of a project, or anything else, along with a description.',
-// 				'order_first_class' => 'order-lg-first'
+// 				'content' => 'An example of where you can put an image of a project, or anything else, along with a description.',
+// 				'order_first_class' => 'order-lg-first',
+// 				'buttons' => []
 // 			];
 		?>
-
+		
 			
 		<div class="row justify-content-center no-gutters mb-5 mb-lg-0">
 			<div class="col-lg-6">
-			  <img class="img-fluid" src="<?php echo $post_row['featured_image']; ?>" alt="">
+			  <img class="img-fluid w-100" style="" src="<?php echo $post_row['featured_image']; ?>" alt="">
 			</div>
 			<div class="col-lg-6 <?php echo $post_row['order_first_class']; ?>">
 			  <div class="bg-black text-center h-100 project">
 				<div class="d-flex h-100">
 				  <div class="project-text w-100 my-auto text-center text-lg-left">
 					<h4 class="text-white"><?php echo $post_row['title']; ?></h4>
-					<p class="mb-0 text-white-50"><?php echo $post_row['excerpt']; ?></p>
-					<hr class="d-none d-lg-block mb-0 ml-0">
+					<div class="mb-0 text-white"><?php echo $post_row['content']; ?></div>
+<!-- 					<hr class="d-none d-lg-block mb-0 ml-0"> -->
+					  <?php
+					  foreach($post_row['buttons'] as $button) { ?>
+						<a href="<?php echo $button['button_href']; ?>" class="btn btn-primary btn-sm js-scroll-trigger"><?php echo $button['button_label']; ?></a>
+					  <?php
+					  }
+					  ?>
 				  </div>
 				</div>
 			  </div>

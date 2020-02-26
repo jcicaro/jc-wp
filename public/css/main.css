@@ -24,7 +24,22 @@ body {
 * Grayscale Theme
 ***********************************************/
 
+.about-section p {
+    margin-bottom: 2rem;
+}
 
+.about-section .featured-img {
+    margin-top: 2rem;
+}
+
+.projects-section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+.btn-sm {
+    padding: 1rem;
+}
 
 /**********************************************
 * ACF Styles

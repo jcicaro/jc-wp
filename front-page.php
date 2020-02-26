@@ -1,38 +1,69 @@
 <?php get_header(); ?>
 <?php JC_Sandbox::run(); ?>
-<?php // JC_Component::the_nav(); ?>
+<?php JC_Component::the_nav(); ?>
 
 <?php
 if (have_posts()):
 	while(have_posts()): the_post();
-// 		echo get_the_ID();
+		$post_id = get_the_ID();
 		
-		// check if the repeater field has rows of data
-		if( have_rows('sections') ):
+		if( have_rows('sections', $post_id) ):
+			$summary_row_index = 0;
+			$inside_post_row_container = false;
 
-			// loop through the rows of data
-			while ( have_rows('sections') ) : the_row();
+			while ( have_rows('sections', $post_id) ) : the_row();
 
-				// display a sub field value
 				$post = get_sub_field('post');
-// 				var_dump($post) ;
-// 				var_dump($post->ID) ;
-// 				var_dump($post->post_title) ;
+				$render_func = get_sub_field('render_function');
+				$order_first_class = '';
 
-// 				JC_Component::the_featured_primary([
-// 					'post_id' => $post->ID,
-// 					'featured_image' => get_the_post_thumbnail_url($post->ID,'full'),
-// 					'title' => $post->post_title,
-// 					'content' => get_field('subtitle', $post->ID)
-// 				]);
+				if ($render_func == 'the_post_summary_row' && $inside_post_row_container == false) { ?>
+					<section id="projects" class="projects-section bg-light">
+						<div class="container">
+				<?php
+					$inside_post_row_container = true;
+					if ($summary_row_index%2 == 1) {
+						$order_first_class = 'order-lg-first';
+					}
+					$summary_row_index++;
+				}
+				else if ($render_func != 'the_post_summary_row' && $inside_post_row_container == true) { ?>
+						</div>
+					</section>
+				<?php
+					$inside_post_row_container = false;
+				}
+				else if ($render_func == 'the_post_summary_row') { 
+					if ($summary_row_index%2 == 1) {
+						$order_first_class = 'order-lg-first';
+					}
+					$summary_row_index++;
+				}
 
+				$buttons = [];
 				if (have_rows('buttons')): 
 					while(have_rows('buttons')): the_row();
-						var_dump(get_sub_field('button_label'));
-					endwhile;
+						array_push($buttons, [
+							'button_label' => get_sub_field('button_label'),
+							'button_href' => get_sub_field('button_href')
+						]);
+					endwhile; // buttons
 				endif;
+				
+				$arg = [
+					'post_id' => $post->ID,
+					'featured_image' => get_the_post_thumbnail_url($post->ID,'full'),
+					'title' => $post->post_title,
+					'content' => get_field('subtitle', $post->ID),
+					'buttons' => $buttons
+				];
+				if ($render_func == 'the_post_summary_row') {
+					$arg['order_first_class'] = $order_first_class;
+				}
+				call_user_func(['JC_Component', $render_func], $arg);
 
-			endwhile;
+
+			endwhile; // sections
 
 		else :
 
@@ -40,7 +71,7 @@ if (have_posts()):
 
 		endif;
 
-	endwhile;
+	endwhile; // posts
 endif;
 ?>
 
