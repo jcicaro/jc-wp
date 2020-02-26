@@ -78,7 +78,7 @@ class JC_Component {
 			];	
 		?>
 
-		<section id="projects" class="projects-section bg-light">
+		<section id="projects" class="projects-section">
 			<div class="container">
 				<div class="row align-items-center no-gutters mb-4 mb-lg-5">
 					<div class="col-xl-8 col-lg-7">
@@ -400,6 +400,40 @@ class JC_Component {
 		</div><!-- .container -->
 	  </section> <!-- .contact-section -->
 
+	<?php
+	}
+	
+	public static function the_social_links() { 
+		$social_links = [
+			[
+				'fa_class' => 'fa fa-twitter',
+				'href' => '#'
+			],
+			[
+				'fa_class' => 'fa fa-facebook-f',
+				'href' => '#'
+			],
+			[
+				'fa_class' => 'fa fa-github',
+				'href' => '#'
+			],
+			[
+				'fa_class' => 'fa fa-facebook-f',
+				'href' => '#'
+			],
+		];	?>
+		<div class="contact-section">
+			
+
+			<div class="social d-flex justify-content-center bg-black">
+				<?php 
+				foreach ($social_links as $sl) {
+					self::the_social_badge($sl);
+				}
+				?>
+			</div>
+		</div>
+		
 	<?php
 	}
 	

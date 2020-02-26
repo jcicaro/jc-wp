@@ -33,8 +33,13 @@ body {
 }
 
 .projects-section {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-top: 10rem;
+    padding-bottom: 0;
+}
+
+.social {
+    padding: 5rem 0;
+    margin-top: 10rem;
 }
 
 .btn-sm {

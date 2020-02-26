@@ -18,7 +18,7 @@ if (have_posts()):
 				$order_first_class = '';
 
 				if ($render_func == 'the_post_summary_row' && $inside_post_row_container == false) { ?>
-					<section id="projects" class="projects-section bg-light">
+					<section id="projects" class="projects-section">
 						<div class="container">
 				<?php
 					$inside_post_row_container = true;
@@ -27,7 +27,9 @@ if (have_posts()):
 					}
 					$summary_row_index++;
 				}
-				else if ($render_func != 'the_post_summary_row' && $inside_post_row_container == true) { ?>
+				else if ($render_func != 'the_post_summary_row' && $inside_post_row_container == true) { 
+					
+				?>
 						</div>
 					</section>
 				<?php
@@ -64,15 +66,20 @@ if (have_posts()):
 
 
 			endwhile; // sections
-
-		else :
-
-			// no rows found
+			
+			if ($inside_post_row_container == true) { ?>
+					</div>
+				</section>
+			<?php 
+			}
 
 		endif;
 
 	endwhile; // posts
 endif;
 ?>
+
+<?php JC_Component::the_social_links(); ?>
+<?php // JC_Component::the_trisection(); ?>
 
 <?php get_footer(); ?>
