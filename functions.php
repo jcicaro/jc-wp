@@ -49,3 +49,27 @@ add_action('wp_enqueue_scripts', function() {
     // Remove admin bar on the front end
     add_filter('show_admin_bar', '__return_false');
 
+
+if( function_exists('acf_add_options_page') ) {
+	
+	acf_add_options_page(array(
+		'page_title' 	=> 'JC Theme General Settings',
+		'menu_title'	=> 'JC Theme Settings',
+		'menu_slug' 	=> 'jc-theme-general-settings',
+		'capability'	=> 'edit_posts',
+		'redirect'		=> false
+	));
+	
+// 	acf_add_options_sub_page(array(
+// 		'page_title' 	=> 'Theme Header Settings',
+// 		'menu_title'	=> 'Header',
+// 		'parent_slug'	=> 'jc-theme-general-settings',
+// 	));
+	
+// 	acf_add_options_sub_page(array(
+// 		'page_title' 	=> 'Theme Footer Settings',
+// 		'menu_title'	=> 'Footer',
+// 		'parent_slug'	=> 'jc-theme-general-settings',
+// 	));
+	
+}

@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<?php JC_Sandbox::run(); ?>
+
 <?php JC_Component::the_nav(); ?>
 
 <?php
@@ -80,6 +80,5 @@ endif;
 ?>
 
 <?php JC_Component::the_social_links(); ?>
-<?php // JC_Component::the_trisection(); ?>
 
 <?php get_footer(); ?>

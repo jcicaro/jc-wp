@@ -80,7 +80,7 @@ class JC_Component {
 
 		<section id="projects" class="projects-section">
 			<div class="container">
-				<div class="row align-items-center no-gutters mb-4 mb-lg-5">
+				<div class="row align-items-center no-gutters mb-4">
 					<div class="col-xl-8 col-lg-7">
 					  <img class="img-fluid mb-3 mb-lg-0" src="<?php echo $param['featured_image']; ?>" alt="">
 					</div>
@@ -124,7 +124,7 @@ class JC_Component {
 				<div class="d-flex h-100">
 				  <div class="project-text w-100 my-auto text-center text-lg-left">
 					<h4 class="text-white"><?php echo $post_row['title']; ?></h4>
-					<div class="mb-0 text-white"><?php echo $post_row['content']; ?></div>
+					<div class="mb-3 text-white"><?php echo $post_row['content']; ?></div>
 <!-- 					<hr class="d-none d-lg-block mb-0 ml-0"> -->
 					  <?php
 					  foreach($post_row['buttons'] as $button) { ?>
@@ -231,9 +231,18 @@ class JC_Component {
 	public static function the_nav() { ?>
 	
 	<!-- Navigation -->
-	  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+	  <nav class="navbar navbar-expand-lg navbar-light navbar-shrink fixed-top" id="mainNav">
 		<div class="container">
-		  <a class="navbar-brand js-scroll-trigger" href="#page-top">jc.icaro</a>
+		  <a class="navbar-brand js-scroll-trigger" href="#page-top">
+			  <span>
+				  <?php 
+				  	$logo_dark = get_field('logo_dark', 'option');
+					$logo_light = get_field('logo_light', 'option');
+				  ?>
+				  <img class="logo-dark"  src="<?php echo $logo_dark['sizes']['medium']; ?>" alt="">
+				  <img class="logo-light" src="<?php echo $logo_light['sizes']['medium'];  ?>" alt="">
+			  </span>
+			</a>
 		  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
 			Menu
 			<i class="fa fa-bars"></i>
@@ -404,37 +413,81 @@ class JC_Component {
 	}
 	
 	public static function the_social_links() { 
-		$social_links = [
-			[
-				'fa_class' => 'fa fa-twitter',
-				'href' => '#'
-			],
-			[
-				'fa_class' => 'fa fa-facebook-f',
-				'href' => '#'
-			],
-			[
-				'fa_class' => 'fa fa-github',
-				'href' => '#'
-			],
-			[
-				'fa_class' => 'fa fa-facebook-f',
-				'href' => '#'
-			],
-		];	?>
+// 		$social_links = [
+// 			[
+// 				'fa_class' => 'fa fa-twitter',
+// 				'href' => '#'
+// 			],
+// 			[
+// 				'fa_class' => 'fa fa-facebook-f',
+// 				'href' => '#'
+// 			],
+// 			[
+// 				'fa_class' => 'fa fa-github',
+// 				'href' => '#'
+// 			],
+// 			[
+// 				'fa_class' => 'fa fa-facebook-f',
+// 				'href' => '#'
+// 			],
+// 		];	
+		?>
 		<div class="contact-section">
 			
 
 			<div class="social d-flex justify-content-center bg-black">
-				<?php 
-				foreach ($social_links as $sl) {
-					self::the_social_badge($sl);
-				}
-				?>
+				
+				<?php while( have_rows('social_links', 'options') ): the_row(); 
+					self::the_social_badge([
+						'fa_class' => get_sub_field('font_awesome_icon_class'),
+						'href' => get_sub_field('button_href')
+					]);
+				endwhile; ?>
+				
 			</div>
 		</div>
 		
 	<?php
+	}
+	
+	/*
+	 * custom pagination with bootstrap .pagination class
+	 * source: http://www.ordinarycoder.com/paginate_links-class-ul-li-bootstrap/
+	 */
+	public static function bootstrap_pagination( $echo = true ) {
+		global $wp_query;
+
+		$big = 999999999; // need an unlikely integer
+
+		$pages = paginate_links( array(
+				'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+				'format' => '?paged=%#%',
+				'current' => max( 1, get_query_var('paged') ),
+				'total' => $wp_query->max_num_pages,
+				'type'  => 'array',
+				'prev_next'   => true,
+				'prev_text'    => __('« Prev'),
+				'next_text'    => __('Next »'),
+			)
+		);
+
+		if( is_array( $pages ) ) {
+			$paged = ( get_query_var('paged') == 0 ) ? 1 : get_query_var('paged');
+
+			$pagination = '<ul class="pagination pagination-sm">';
+
+			foreach ( $pages as $page ) {
+				$pagination .= '<li class="page-item">' . $page . '</li>';
+			}
+
+			$pagination .= '</ul>';
+
+			if ( $echo ) {
+				echo $pagination;
+			} else {
+				return $pagination;
+			}
+		}
 	}
 	
 	public static function the_footer() { 

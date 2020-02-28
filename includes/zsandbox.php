@@ -8,9 +8,17 @@ class JC_Sandbox {
 		if (!JC_Sandbox::$debug) { return; }
 		
 		// Run the code to test here
-		JC_Sandbox::get_posts_by_taxonomy('testing');
+		JC_Sandbox::test_acf_option();
 		
 		wp_die();
+	}
+	
+	public static function test_acf_option() {
+		$image = get_field('logo_dark', 'option');
+		$size = 'thumbnail'; // (thumbnail, medium, large, full or custom size)
+		if( $image ) {
+			JC_Sandbox::print($image);
+		}
 	}
 	
 	public static function get_posts_by_category($category_name) {

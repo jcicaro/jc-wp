@@ -32,7 +32,7 @@
 	<?php wp_head(); ?>
 </head>
 
-<body id="page-top">
+<body id="page-top" <?php body_class(); ?>>
 
-	
+	<?php JC_Sandbox::run(); ?>
 	
