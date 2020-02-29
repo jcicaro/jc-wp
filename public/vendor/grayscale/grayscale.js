@@ -27,13 +27,13 @@
 //   });
 
   // Collapse Navbar
-  var navbarCollapse = function() {
-    if (($("#mainNav").offset() && $("#mainNav").offset().top > 100) || !$("body.home").length) {
-      $("#mainNav").addClass("navbar-shrink");
-    } else {
-      $("#mainNav").removeClass("navbar-shrink");
-    }
-  };
+//   var navbarCollapse = function() {
+//     if (($("#mainNav").offset() && $("#mainNav").offset().top > 100) || !$("body.home").length) {
+//       $("#mainNav").addClass("navbar-shrink");
+//     } else {
+//       $("#mainNav").removeClass("navbar-shrink");
+//     }
+//   };
 	
 $(function() {
 	

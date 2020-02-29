@@ -33,6 +33,8 @@
 </head>
 
 <body id="page-top" <?php body_class(); ?>>
+	
+	<?php JC_Component::the_nav(); ?>
 
 	<?php JC_Sandbox::run(); ?>
 	

@@ -12,7 +12,7 @@
 ***********************************************/
 
 body {
-/*     background: linear-gradient(to bottom, #161616 0%, rgba(22, 22, 22, 0.9) 75%, rgba(22, 22, 22, 0.8) 100%); */
+    
 }
 
 .form-control:focus {
@@ -29,7 +29,6 @@ body {
     color: white;
     border: thin solid black;
 }
-
 
 /**********************************************
 * Grayscale Theme
@@ -71,15 +70,15 @@ body {
     }
 }
 
-.jc-featured-dark-bg p {
+.about-section p {
     margin-bottom: 2rem;
 }
 
-.jc-featured-dark-bg .featured-img {
+.about-section .featured-img {
     margin-top: 2rem;
 }
 
-.jc-post-rows {
+.projects-section {
     padding-top: 5rem;
     padding-bottom: 0;
 }

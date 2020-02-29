@@ -1,10 +1,12 @@
 <?php get_header(); ?>
 
+<?php JC_Component::the_nav(); ?>
+
 <?php
 if (have_posts()): 
     $summary_row_index = 0;
 ?>
-    <section id="jc-post-rows" class="jc-post-rows">
+    <section id="projects" class="projects-section">
 		<div class="container">
                             
     <?php
@@ -49,7 +51,7 @@ if (have_posts()):
 	endwhile; // posts
             
         ?>
-            <div class="mt-5 mb-4 d-flex justify-content-center">
+            <div class="mt-5 d-flex justify-content-center">
                 <?php JC_Component::bootstrap_pagination(); ?>
             </div>
             
@@ -59,5 +61,9 @@ if (have_posts()):
 endif;
 ?>
 
+
+
+
+<?php JC_Component::the_social_links(); ?>
 
 <?php get_footer(); ?>
