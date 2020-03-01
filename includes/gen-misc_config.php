@@ -1,5 +1,9 @@
 <?php
 
+add_action( 'after_setup_theme', function() {
+    add_theme_support( 'post-thumbnails' );
+});
+
 // remove the 32px margin at the top
 add_action('get_header', 'luna_remove_filter_head'); 
 function luna_remove_filter_head() {
