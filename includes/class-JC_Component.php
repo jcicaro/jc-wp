@@ -17,9 +17,10 @@ class JC_Component {
 // 		];
 		
 		$d_none = is_single() ? 'd-none' : '';
+		$bg_size = is_single() ? '100% 100%' : 'cover';
 	?>
 	
-	 <header class="masthead" style="background: linear-gradient(to bottom, rgba(22, 22, 22, 0.3) 0%, rgba(22, 22, 22, 0.7) 75%, #161616 100%), url(<?php echo $param['featured_image']; ?>); background-size: cover; ">
+	 <header class="masthead" style="background: linear-gradient(to bottom, rgba(22, 22, 22, 0.3) 0%, rgba(22, 22, 22, 0.7) 75%, #161616 100%), url(<?php echo $param['featured_image']; ?>); background-size: <?php echo $bg_size; ?>; ">
 		<div class="container d-flex h-100 align-items-center">
 		  <div class="mx-auto text-center <?php echo $d_none; ?>">
 			<h1 class="mx-auto my-0 text-uppercase"><?php echo $param['title']; ?></h1>
