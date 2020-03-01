@@ -127,7 +127,7 @@ class JC_Component {
 			
 		<div class="row justify-content-center no-gutters mb-5 mb-lg-0">
 			<div class="col-lg-6">
-			  <img class="img-fluid w-100" style="" src="<?php echo $post_row['featured_image']; ?>" alt="">
+			  <img class="img-fluid w-100 h-100" style="" src="<?php echo $post_row['featured_image']; ?>" alt="">
 			</div>
 			<div class="col-lg-6 <?php echo $post_row['order_first_class']; ?>">
 			  <div class="bg-black text-center h-100 project">
