@@ -36,7 +36,7 @@ if (have_posts()):
 					  <div class="text-white"><?php the_content(); ?></div>
 				<?php 
 					while(have_rows('code_section')): the_row();
-						echo '<pre class="language-javascript line-numbers"><code>' . get_sub_field('code') . '</code></pre>';
+						echo '<pre class="language-' . get_sub_field('language') . ' line-numbers"><code>' . get_sub_field('code') . '</code></pre>';
 						echo '<div class="text-white">' . get_sub_field('notes') . '</div>';
 					endwhile;
 				?>
