@@ -16,11 +16,12 @@ class JC_Component {
 // 			'buttons' => []
 // 		];
 		
+		$d_none = is_single() ? 'd-none' : '';
 	?>
 	
 	 <header class="masthead" style="background: linear-gradient(to bottom, rgba(22, 22, 22, 0.3) 0%, rgba(22, 22, 22, 0.7) 75%, #161616 100%), url(<?php echo $param['featured_image']; ?>); background-size: cover; ">
 		<div class="container d-flex h-100 align-items-center">
-		  <div class="mx-auto text-center">
+		  <div class="mx-auto text-center <?php echo $d_none; ?>">
 			<h1 class="mx-auto my-0 text-uppercase"><?php echo $param['title']; ?></h1>
 			<h2 class="text-white-50 mx-auto mt-2 mb-5"><?php echo $param['content']; ?></h2>
 			  <?php
