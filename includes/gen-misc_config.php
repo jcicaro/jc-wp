@@ -12,3 +12,10 @@ add_filter('show_admin_bar', '__return_false');
 add_filter( 'excerpt_length', function($length) {
     return 20;
 });
+
+// Add code snippet to main query
+add_action( 'pre_get_posts', function ( $query ) {
+    if ( $query->is_home() && $query->is_main_query() ) {
+        $query->set( 'post_type', array('post', 'code_snippet') );
+    }
+});

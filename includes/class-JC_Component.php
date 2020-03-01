@@ -56,6 +56,11 @@ class JC_Component {
 		  <div class="row">
 			<div class="col-lg-8 mx-auto">
 			  <h2 class="text-white mb-4 text-center"><?php echo $param['title']; ?></h2>
+			<?php 
+				if ($param['show_date'] === true) {
+					echo '<h5 class="text-center mb-4"> <span class="badge badge-pill badge-light">' . get_the_date( 'M Y' ) . '</span></h5>';
+				}
+			?>
 			  <div class="text-white"><?php echo $param['content']; ?></div>
 				 <?php
 			  foreach($param['buttons'] as $button) { ?>
@@ -532,7 +537,8 @@ class JC_Component {
 					'title' => get_the_title(),
 					'content' => $post_content, // get_the_content(), // get_field('subtitle', $post->ID),
 					'buttons' => [],
-					'align_left' => true
+					'align_left' => true,
+					'show_date' => true
 				]);
 
 			endwhile; // posts

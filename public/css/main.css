@@ -117,3 +117,12 @@ body {
 .acf-file-uploader a.button:hover {
     text-decoration: none;
 }
+
+/**********************************************
+* PrismJS Code Styles
+***********************************************/
+
+.single-code_snippet .code-toolbar {
+    border-top: 2px solid whitesmoke;
+    padding-top: 1rem;
+}
