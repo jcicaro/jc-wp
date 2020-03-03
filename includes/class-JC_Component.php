@@ -16,8 +16,8 @@ class JC_Component {
 // 			'buttons' => []
 // 		];
 		
-		$d_none = is_single() ? 'd-none' : '';
-		$bg_size = is_single() ? '100% 100%' : 'cover';
+		$d_none = ''; // is_single() ? 'd-none' : '';
+		$bg_size = 'cover'; // is_single() ? '100% 100%' : 'cover';
 	?>
 	
 	 <header class="masthead" style="background: linear-gradient(to bottom, rgba(22, 22, 22, 0.3) 0%, rgba(22, 22, 22, 0.7) 75%, #161616 100%), url(<?php echo $param['featured_image']; ?>); background-size: <?php echo $bg_size; ?>; ">
