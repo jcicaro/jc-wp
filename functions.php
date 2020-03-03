@@ -4,6 +4,7 @@ require_once(get_template_directory() . '/includes/zsandbox.php');
 require_once(get_template_directory() . '/includes/class-JC_Component.php');
 require_once(get_template_directory() . '/includes/gen-misc_config.php');
 require_once(get_template_directory() . '/includes/acf-theme_config.php');
+// require_once(get_template_directory() . '/templates/template-photography.php');
 
 
 add_action('wp_enqueue_scripts', function() {
