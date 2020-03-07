@@ -19,8 +19,8 @@ add_filter( 'excerpt_length', function($length) {
 
 // Add code snippet to main query
 add_action( 'pre_get_posts', function ( $query ) {
-//     if ( $query->is_home() && $query->is_main_query() ) {
-    if ($query->is_main_query()) {
+    if ( ($query->is_home() && $query->is_main_query()) || 
+		($query->is_archive() && $query->is_main_query())) {
         $query->set( 'post_type', array('post', 'code_snippet') );
     }
 });
